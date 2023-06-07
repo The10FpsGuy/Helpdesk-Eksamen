@@ -13,14 +13,14 @@
     <h1>Registrere et problem</h1>
     <hr>
 
-    <label for="email"><b>Navn</b></label>
-    <input type="text" placeholder="Skriv hele navnet ditt her" name="email" id="email" required>
+    <label for="navn"><b>Navn</b></label>
+    <input type="text" placeholder="Skriv hele navnet ditt her" name="navn" id="email" required>
 
-    <label for="psw"><b>Telefonnummer</b></label>
-    <input type="text" placeholder="Telefonnummer (8 siffre)" name="psw" id="psw" pattern="[0-9]{8}" required>
+    <label for="tlf"><b>Telefonnummer</b></label>
+    <input type="text" placeholder="Telefonnummer (8 siffre)" name="tlf" id="psw" pattern="[0-9]{8}" required>
 
     <h3>Beskrivelse av problemet</h3>
-    <textarea placeholder="Skriv beskrivelse av problemet ditt her..." name="beskrivelse" rows="10" cols="100">
+    <textarea placeholder="Skriv beskrivelse av problemet ditt her..." name="beskrivelse" rows="10" cols="100" required>
 
     </textarea>
     <hr>
@@ -30,3 +30,34 @@
 </form> 
 </body>
 </html>
+
+<?php
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "helpdesk";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+
+$navn = $_POST['navn'];
+$tlf = $_POST['tlf'];
+$beskrivelse = $_POST['beskrivelse'];
+
+$sql = "INSERT INTO problemer (navn, tlf, beskrivelse, status)
+VALUES ('$navn', '$tlf', '$beskrivelse', 'Uløst')";
+
+if ($conn->query($sql) === TRUE) {
+    header("Location: index.html");
+} else {
+  echo "Error: " . $sql . "<br>" . $conn->error;
+}
+
+$conn->close();
+}
+?> 
