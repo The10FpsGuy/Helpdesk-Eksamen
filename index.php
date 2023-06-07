@@ -9,7 +9,7 @@
 </head>
 <body>
     <h3>For å søke på et case kan du søke <a href="finn-sak.php">her</a></h3>
-    <h3>Hvis et case har startet behandling, blir den flyttet <a href="under-behandling.php">hit</a></h3>
+    <h3>Her kan du starte en case, og se oversikt om de som har blitt startet<a href="under-behandling.php">hit</a></h3>
     <table>
     <tr>
             <th>Navn</th>
