@@ -20,6 +20,11 @@
             <th>ID</th>
         </tr>
         <?php
+         if (isset($_COOKIE['loggetinn'])) {
+            $cookie_value = $_COOKIE['loggetinn'];
+          } else {
+            header("Location: error403.html");
+          }
         include_once 'connect.php';
         $sql = "SELECT * FROM problemer";
         if ($result = mysqli_query($conn, $sql)) {

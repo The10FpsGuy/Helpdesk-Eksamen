@@ -24,6 +24,11 @@
             </div>    
         </form>
         <?php
+         if (isset($_COOKIE['loggetinn'])) {
+            $cookie_value = $_COOKIE['loggetinn'];
+          } else {
+            header("Location: error403.html");
+          }
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         include_once 'connect.php';
 
@@ -35,13 +40,6 @@
         $sql = "INSERT INTO under_behandling (navn, tid, status, id)
         VALUES ('$navn', '$tid', 'Pågående', $case_id)";
 
-        // if ($conn->query($sql) === TRUE) {
-        //     $sql = "UPDATE problemer SET status='Pågående' WHERE id=$case_id";
-        //     if ($conn->query($sql) === TRUE) {
-        //         header("Location: index.php");
-        //     } else {
-        //      echo "Error: " . $sql . "<br>" . $conn->error;
-        // }}
         if ($conn->query($sql) === TRUE) {
             $sql = "UPDATE problemer SET status='Pågående' WHERE id='$case_id'";
             if ($conn->query($sql) === TRUE) {
