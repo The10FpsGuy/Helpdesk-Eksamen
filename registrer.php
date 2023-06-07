@@ -45,7 +45,7 @@ $sql = "INSERT INTO problemer (navn, tlf, beskrivelse, status, tid)
 VALUES ('$navn', '$tlf', '$beskrivelse', 'Uløst', '$tid')";
 
 if ($conn->query($sql) === TRUE) {
-    header("Location: index.html");
+    header("Location: index.php");
 } else {
   echo "Error: " . $sql . "<br>" . $conn->error;
 }

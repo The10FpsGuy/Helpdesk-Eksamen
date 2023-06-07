@@ -1,0 +1,19 @@
+body{
+    background: #f2f2f2;
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+    }
+
+table {
+    border: 3px black solid;
+    padding: 10px;
+    margin: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+}
+
+table th, td {
+    border: 2px black solid;
+    padding: 20px;
+}
