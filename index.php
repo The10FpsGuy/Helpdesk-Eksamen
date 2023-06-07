@@ -8,6 +8,8 @@
     <link href="css/index.css" rel="stylesheet">
 </head>
 <body>
+    <h3>For å søke på et case kan du søke <a href="finn-sak.php">her</a></h3>
+    <h3>Hvis et case har startet behandling, blir den flyttet <a href="under-behandling.php">hit</h3>
     <table>
     <tr>
             <th>Navn</th>
