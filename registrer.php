@@ -13,13 +13,13 @@
     <h1>Registrere et problem</h1>
     <hr>
 
-    <label for="navn"><b>Navn</b></label>
+    <label for="navn" class="overskrift"><b>Navn</b></label>
     <input type="text" placeholder="Skriv hele navnet ditt her" name="navn" id="email" required>
 
-    <label for="tlf"><b>Telefonnummer</b></label>
+    <label for="tlf" class="overskrift" ><b>Telefonnummer</b></label>
     <input type="text" placeholder="Telefonnummer (8 siffre)" name="tlf" id="psw" pattern="[0-9]{8}" required>
 
-    <h3>Beskrivelse av problemet</h3>
+    <h2 class="overskrift">Beskrivelse av problemet</h2>
     <textarea placeholder="Skriv beskrivelse av problemet ditt her..." name="beskrivelse" rows="10" cols="100" required>
 
     </textarea>
