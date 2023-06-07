@@ -34,13 +34,15 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 include_once 'connect.php';
-
+// Henter alle variablene som vi trenger for en registrering av et case
 $navn = $_POST['navn'];
 $tlf = $_POST['tlf'];
 $beskrivelse = $_POST['beskrivelse'];
+// Her setter jeg tidssonen, og registrerer tid og dato i formatet dag/måned/år time:minutt
 date_default_timezone_set("Europe/Amsterdam");
 $tid = date("d/m/Y h:i");
 
+// Setter inn all data-ene i tabellen, og setter caset som Uløst
 $sql = "INSERT INTO problemer (navn, tlf, beskrivelse, status, tid)
 VALUES ('$navn', '$tlf', '$beskrivelse', 'Uløst', '$tid')";
 

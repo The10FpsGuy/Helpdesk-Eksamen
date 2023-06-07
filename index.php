@@ -20,12 +20,14 @@
             <th>ID</th>
         </tr>
         <?php
+         // Sjekker cookies
          if (isset($_COOKIE['loggetinn'])) {
             $cookie_value = $_COOKIE['loggetinn'];
           } else {
             header("Location: error403.html");
           }
         include_once 'connect.php';
+        // Skriver ut alle case-er som er logga
         $sql = "SELECT * FROM problemer";
         if ($result = mysqli_query($conn, $sql)) {
             while ($row = mysqli_fetch_assoc($result)) {

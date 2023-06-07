@@ -80,6 +80,7 @@
             <th>ID</th>
         </tr>
         <?php
+        // Sjekker om cookies er satt, og hvis ikke så sender deg til en error side
         if (isset($_COOKIE['loggetinn'])) {
             $cookie_value = $_COOKIE['loggetinn'];
         } else {
@@ -87,11 +88,11 @@
         }
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 include_once 'connect.php';
-
+                // Henter nøkkelordet og setter det inn i en sql query
              $søkeord = $_POST['søkeord'];
               $sql = "SELECT * FROM problemer WHERE navn = '$søkeord' OR  tlf = '$søkeord' OR id = '$søkeord' ORDER BY id ASC";
               $result = mysqli_query($conn, $sql);
-            
+            // Outputter alt som har søkeordet i seg
               if ($result = mysqli_query($conn, $sql)) {
                 while ($row = mysqli_fetch_assoc($result)) {
                   $navn = $row['navn'];

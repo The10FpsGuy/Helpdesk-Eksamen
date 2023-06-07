@@ -27,6 +27,7 @@
         </form>
         </div> 
         <?php
+        // Sjekker cookies
          if (isset($_COOKIE['loggetinn'])) {
             $cookie_value = $_COOKIE['loggetinn'];
           } else {
@@ -34,7 +35,7 @@
           }
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         include_once 'connect.php';
-
+        // Henter alle variablene som ble satt inn
         $navn = $_POST['navn'];
         $case_id = $_POST['case_id'];
         date_default_timezone_set("Europe/Amsterdam");
@@ -43,12 +44,14 @@
 
         $result = $conn->query($sql);
         if ($result) {
+            // Hvis den ikke finner case_id-en i problemer tabellen så sier den at den ikke finner den, hvis den finner den så går den videre, og legger inn en record som sier hvem som har tatt på seg case-en, når og ID
             if (mysqli_num_rows($result) > 0) {
                 $sql = "INSERT INTO under_behandling (navn, tid, status, id) VALUES ('$navn', '$tid', 'Under arbeid', $case_id)";
             } else {
                 echo 'Fant ikke ID';
             }
                 if ($conn->query($sql) === TRUE) {
+                    // Her så oppdaterer den forrige innslaget til "Under arbeid", og sjekker opp imot ID-en på case-et
                     $sql = "UPDATE problemer SET status='Under arbeid' WHERE id='$case_id'";
                         if ($conn->query($sql) === TRUE) {
                             header("Location: index.php");
@@ -65,6 +68,7 @@
             <th>ID</th>
         </tr>
         <?php
+        // Her så skriver den ut alle saker i "under_behandling" tabellen, det betyr alle case-ene som har blitt tatt opp
         include_once 'connect.php';
         $sql = "SELECT * FROM under_behandling";
         if ($result = mysqli_query($conn, $sql)) {
