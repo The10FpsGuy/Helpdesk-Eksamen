@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrer sak</title>
+    <title>Helpdesk: Registrer en sak</title>
     <link href="css/registrer.css" rel="stylesheet">
 </head>
 <body>
@@ -33,14 +33,16 @@
 
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-include_once 'connnect.php';
+include_once 'connect.php';
 
 $navn = $_POST['navn'];
 $tlf = $_POST['tlf'];
 $beskrivelse = $_POST['beskrivelse'];
+date_default_timezone_set("Europe/Amsterdam");
+$tid = date("d/m/Y h:i");
 
-$sql = "INSERT INTO problemer (navn, tlf, beskrivelse, status)
-VALUES ('$navn', '$tlf', '$beskrivelse', 'Uløst')";
+$sql = "INSERT INTO problemer (navn, tlf, beskrivelse, status, tid)
+VALUES ('$navn', '$tlf', '$beskrivelse', 'Uløst', '$tid')";
 
 if ($conn->query($sql) === TRUE) {
     header("Location: index.html");
