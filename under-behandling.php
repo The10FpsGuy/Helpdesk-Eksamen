@@ -56,7 +56,7 @@
                         if ($conn->query($sql) === TRUE) {
                             header("Location: index.php");
         } else {
-          echo "Error: " . $sql . "<br>" . $conn->error;
+          echo "Error: " . $sql . "<br>" . $conn->$error;
         }}}}
     ?>   
         <h2>Oversikt over cases som har blitt startet</h2>  
