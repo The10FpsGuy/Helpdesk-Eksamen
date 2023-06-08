@@ -40,7 +40,7 @@ $tlf = $_POST['tlf'];
 $beskrivelse = $_POST['beskrivelse'];
 // Her setter jeg tidssonen, og registrerer tid og dato i formatet dag/måned/år time:minutt
 date_default_timezone_set("Europe/Amsterdam");
-$tid = date("d/m/Y h:i");
+$tid = date("d/m/Y H:i");
 
 // Setter inn all data-ene i tabellen, og setter caset som Uløst
 $sql = "INSERT INTO problemer (navn, tlf, beskrivelse, status, tid)

@@ -39,7 +39,7 @@
         $navn = $_POST['navn'];
         $case_id = $_POST['case_id'];
         date_default_timezone_set("Europe/Amsterdam");
-        $tid = date("d/m/Y h:i");
+        $tid = date("d/m/Y H:i");
         $sql = "SELECT * FROM problemer WHERE id='$case_id'";
 
         $result = $conn->query($sql);
