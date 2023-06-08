@@ -10,6 +10,7 @@
 <body>
     <h3>For å søke på et case kan du søke <a href="finn-sak.php">her</a></h3>
     <h3>Her kan du starte en case, og se oversikt om de som har blitt startet <a href="under-behandling.php">hit</a></h3>
+    <h3>Hvis du vil slette en case, kan du gjøre det <a href="slett-case.php">her</a>
     <table>
     <tr>
             <th>Navn</th>
@@ -28,7 +29,7 @@
           }
         include_once 'connect.php';
         // Skriver ut alle case-er som er logga
-        $sql = "SELECT * FROM problemer";
+        $sql = "SELECT * FROM problemer ORDER BY status ASC";
         if ($result = mysqli_query($conn, $sql)) {
             while ($row = mysqli_fetch_assoc($result)) {
               $navn = $row['navn'];
