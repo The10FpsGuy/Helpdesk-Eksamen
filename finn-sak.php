@@ -90,7 +90,7 @@
                 include_once 'connect.php';
                 // Henter nøkkelordet og setter det inn i en sql query
              $søkeord = $_POST['søkeord'];
-              $sql = "SELECT * FROM problemer WHERE navn = '$søkeord' OR  tlf = '$søkeord' OR id = '$søkeord' ORDER BY id ASC";
+              $sql = "SELECT * FROM problemer WHERE navn LIKE '%$søkeord%' OR  tlf LIKE '%$søkeord%' OR id LIKE '%$søkeord%' OR status LIKE '%$søkeord%'ORDER BY id ASC";
               $result = mysqli_query($conn, $sql);
             // Outputter alt som har søkeordet i seg
               if ($result = mysqli_query($conn, $sql)) {
