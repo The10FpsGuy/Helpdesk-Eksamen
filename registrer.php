@@ -20,7 +20,7 @@
     <input type="text" placeholder="Telefonnummer (8 siffre)" name="tlf" id="psw" pattern="[0-9]{8}" required>
 
     <h2 class="overskrift">Beskrivelse av problemet</h2>
-    <textarea placeholder="Skriv beskrivelse av problemet ditt her..." name="beskrivelse" rows="10" cols="100" required>
+    <textarea placeholder="Skriv beskrivelse av problemet ditt her..." name="beskrivelse" rows="10" cols="100" maxlength="1000" required>
 
     </textarea>
     <hr>
@@ -49,7 +49,7 @@ VALUES ('$navn', '$tlf', '$beskrivelse', 'Uløst', '$tid')";
 if ($conn->query($sql) === TRUE) {
     header("Location: index.php");
 } else {
-  echo "Error: " . $sql . "<br>" . $conn->error;
+  echo "Error: " . $sql . "<br>" . $conn->$error;
 }
 
 $conn->close();
