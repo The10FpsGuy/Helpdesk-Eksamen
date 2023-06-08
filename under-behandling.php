@@ -62,9 +62,9 @@
         <h2>Oversikt over cases som har blitt startet</h2>  
         <table>
     <tr>
-            <th>Navn</th>
+            <th>Navn på behandler</th>
             <th>Status</th>
-            <th>Dato og Tid</th>
+            <th>Dato og Tid startet</th>
             <th>ID</th>
         </tr>
         <?php
