@@ -11,14 +11,16 @@
 <header>
 <header>
     <button class="button search-icon" onclick="window.location.href = 'finn-sak.php';">&#128269;</button><p class="inline">Søk på sak</p>
-    <button class="button loading-circle" onclick="window.location.href = 'under-behandling.php';">&#9898;</button><p class="inline">Marker som "Under arbeid"</p>
-    <button class="button check-mark" onclick="window.location.href = 'slett-case';">&#10003;</button><p class="inline">Marker som "Ferdig"</p>
+    <button class="button loading-circle" onclick="window.location.href = 'under-behandling.php';">&#9898;</button><p class="inline">"Under arbeid" Oversikt</p>
+    <button class="button check-mark" onclick="window.location.href = 'slett-case';">&#10003;</button><p class="inline">"Ferdig" Oversikt</p>
+    <button class="button fa-solid fa-char-bar"onclick="window.location.href = 'stats.php';">&#128202;</button><p class="inline">Statistikk</p>
     
   </header>
     <!-- <h3>For å søke på et case kan du søke <a href="finn-sak.php">her</a></h3>
     <h3>Her kan du starte en case, og se oversikt om de som har blitt startet <a href="under-behandling.php">hit</a></h3>
     <h3>Hvis du vil slette en case, kan du gjøre det <a href="slett-case.php">her</a> -->
     <table>
+      <h3>Alle uløste saker</h3>
     <tr>
             <th>Navn</th>
             <th>Telefonnummer</th>
@@ -36,7 +38,7 @@
           }
         include_once 'connect.php';
         // Skriver ut alle case-er som er logga
-        $sql = "SELECT * FROM problemer ORDER BY status ASC";
+        $sql = "SELECT * FROM problemer WHERE status='Uløst' ORDER BY status ASC";
         if ($result = mysqli_query($conn, $sql)) {
             while ($row = mysqli_fetch_assoc($result)) {
               $navn = $row['navn'];
