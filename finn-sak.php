@@ -5,61 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Helpdesk: Søk etter sak</title>
+    <link href="css/finn-sak.css" rel="stylesheet">
 </head>
 <body>
     <style>
-        @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 
-    body{
-    background: #f2f2f2;
-    font-family: 'Open Sans', sans-serif;
-    }
 
-    .search {
-    width: 100%;
-    position: relative;
-    display: flex;
-    }
-
-    .searchTerm {
-    width: 100%;
-    border: 3px solid black;
-    border-right: none;
-    padding: 5px;
-    height: 40px;
-    border-radius: 5px 0 0 5px;
-    outline: none;
-    color: #9DBFAF;
-    }
-
-    .searchTerm:focus{
-    color: #00B4CC;
-    }
-
-    .searchButton {
-    width: 56px;
-    height: 56px;
-    border: 1px solid #00B4CC;
-    background: #00B4CC;
-    text-align: center;
-    color: #fff;
-    border-radius: 0 5px 5px 0;
-    cursor: pointer;
-    font-size: 20px;
-    }
-
-    .wrap{
-    width: 40%;
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    }
-
-    table {
-        width: 100%;
-        text-align: center;
-    }
     </style>
     <div class="wrap">
         <form action="#" method="POST">
@@ -76,7 +27,7 @@
             <th>Telefonnummer</th>
             <th>Beskrivelse</th>
             <th>Status</th>
-            <th>Dato og Tid</th>
+            <th>Dato og Tid startet</th>
             <th>ID</th>
         </tr>
         <?php
@@ -90,7 +41,7 @@
                 include_once 'connect.php';
                 // Henter nøkkelordet og setter det inn i en sql query
              $søkeord = $_POST['søkeord'];
-              $sql = "SELECT * FROM problemer WHERE navn LIKE '%$søkeord%' OR  tlf LIKE '%$søkeord%' OR id LIKE '%$søkeord%' OR status LIKE '%$søkeord%'ORDER BY id ASC";
+              $sql = "SELECT * FROM problemer WHERE navn LIKE '%$søkeord%' OR  tlf LIKE '%$søkeord%' OR id LIKE '%$søkeord%' OR status LIKE '%$søkeord%'";
               $result = mysqli_query($conn, $sql);
             // Outputter alt som har søkeordet i seg
               if ($result = mysqli_query($conn, $sql)) {
