@@ -55,6 +55,7 @@
                 echo "<td>$navn</td>";
                 echo "<td>$status</td>";
                 echo "<td>$tid</td>";
+                echo "<td>$løsning</td>";
                 echo "<td>$id</td>";
             echo "</tr>";
             }}
@@ -85,7 +86,7 @@
             if ($conn->query($sql) === TRUE) {
                 $sql = "DELETE FROM under_behandling WHERE id='$id'";
                 if ($conn->query($sql) === TRUE) {
-                    $sql = "INSERT INTO ferdig (navn, status, tid,, løsning id) VALUES ('$navn', 'Løst', '$tid', '$løsning', '$id')";
+                    $sql = "INSERT INTO ferdig (navn, status, tid, løsning, id) VALUES ('$navn', 'Løst', '$tid', '$løsning', '$id')";
                     if ($conn->query($sql) === TRUE) {
                         header("Location: index.php");
                     }
