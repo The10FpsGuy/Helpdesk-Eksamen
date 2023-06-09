@@ -47,7 +47,7 @@
             while ($row = mysqli_fetch_assoc($result)) {
               $navn = $row['navn'];
               $status = $row['status'];
-              $tid = $row['tid'];
+              $tid = $row['tid_ferdig'];
               $løsning = $row['løsning'];
               $id = $row['id'];
             
@@ -86,7 +86,7 @@
             if ($conn->query($sql) === TRUE) {
                 $sql = "UPDATE problemer SET status='Ferdig' WHERE id='$id'";
                 if ($conn->query($sql) === TRUE) {
-                    $sql = "INSERT INTO ferdig (navn, status, tid, løsning, id) VALUES ('$navn', 'Løst', '$tid', '$løsning', '$id')";
+                    $sql = "INSERT INTO ferdig (navn, status, tid_ferdig, løsning, id) VALUES ('$navn', 'Løst', '$tid', '$løsning', '$id')";
                     if ($conn->query($sql) === TRUE) {
                         header("Location: index.php");
                     }

@@ -87,7 +87,7 @@
                 $sql = "SELECT Count(status) as count FROM under_behandling";
                 $result2 = mysqli_query($conn, $sql);
                 $count = mysqli_fetch_assoc($result2)['count'];
-                $total_tid = ($total_tid + $case_tid) / $count;
+                $total_tid = floor(($total_tid + $case_tid) / $count);
             }
                 echo " <td>$total_tid Minutter</td>";
             }
