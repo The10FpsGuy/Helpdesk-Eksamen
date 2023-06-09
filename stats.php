@@ -23,7 +23,7 @@
         $result = mysqli_query($conn, $sql);
         $data=mysqli_fetch_assoc($result);
         $data=$data['total'];
-        echo "<td>$data</td>";
+        echo "<td>$data Minutter</td>";
             ?>
         </tr>
         <tr>
@@ -35,7 +35,7 @@
         $result = mysqli_query($conn, $sql);
         $data=mysqli_fetch_assoc($result);
         $data=$data['total'];
-        echo "<td>$data</td>";
+        echo "<td>$data Minutter</td>";
             ?>
         </tr>
         <tr>
@@ -47,7 +47,7 @@
         $result = mysqli_query($conn, $sql);
         $data=mysqli_fetch_assoc($result);
         $data=$data['total'];
-        echo "<td>$data</td>";
+        echo "<td>$data Minutter</td>";
             ?>
         </tr>
         <tr>
@@ -59,7 +59,7 @@
         $result = mysqli_query($conn, $sql);
         $data=mysqli_fetch_assoc($result);
         $data=$data['total'];
-        echo "<td>$data</td>";
+        echo "<td>$data Minutter</td>";
             ?>
         </tr>
         <tr>
@@ -91,25 +91,6 @@
             }
                 echo " <td>$total_tid Minutter</td>";
             }
-
-
-
-
-        // $sql = "SELECT * FROM problemer WHERE status='Under Arbeid'";
-        // if ($result = mysqli_query($conn, $sql)) {
-        //     while ($row = mysqli_fetch_assoc($result)) {
-        //       $start_tid = $row['tid'];
-        //       $id = $row['id'];
-        //         $sql = "SELECT * FROM under_behandling WHERE id='$id'";
-        //         if ($result2 = mysqli_query($conn, $sql)) {
-        //             while ($row = mysqli_fetch_assoc($result2)) {
-        //                 $slutt_tid = $row['tid'];
-        //                 $start = strtotime($start_tid);
-        //                 $start = str_replace('/', '-', $start);
-        //                 $slutt = strtotime($slutt_tid);
-        //                 $slutt = str_replace('/', '-', $slutt);
-        //                 echo round(abs($start - $slutt) / 60). " minute";
-        //     }}}}
             ?>
         </tr>
         <tr>
@@ -126,17 +107,23 @@
             while ($Row = mysqli_fetch_assoc($result)) {
                 $reg_tid = $Row['tid'];
                 $id = $Row['id'];
-                $start_tid = $Row['tid'];
+                $ferdig_tid = $Row['tid_ferdig'];
 
                 $start = strtotime($reg_tid);
                 $start = str_replace('/', '-', $start);
-                $slutt = strtotime($start_tid);
+                $slutt = strtotime($ferdig_tid);
                 $slutt = str_replace('/', '-', $slutt);
+                $case_tid  = round(abs($start - $slutt) / 60);
+
             
-                $sql = "SELECT Count(status) as count FROM under_behandling";
+                $sql = "SELECT Count(status) as count FROM ferdig";
                 $result2 = mysqli_query($conn, $sql);
                 $count = mysqli_fetch_assoc($result2)['count'];
-            }}
+                $total_tid = floor(($total_tid + $case_tid) / $count);
+            }
+            echo " <td>$total_tid Minutter</td>";
+
+        }
             ?>
         </tr>
     </table>
