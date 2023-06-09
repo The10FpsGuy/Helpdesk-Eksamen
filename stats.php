@@ -69,8 +69,9 @@
         $sql = "SELECT *
         FROM problemer
         INNER JOIN under_behandling
-        ON problemer.id = under_behandling.id";
+        ON problemer.id = under_behandling.id;";
           $result = mysqli_query($conn, $sql) or die("error".mysqli_error($conn));
+          $total_tid = 0;
           if (mysqli_num_rows($result) > 0) {
             while ($Row = mysqli_fetch_assoc($result)) {
                 $reg_tid = $Row['tid'];
@@ -81,8 +82,15 @@
                 $start = str_replace('/', '-', $start);
                 $slutt = strtotime($start_tid);
                 $slutt = str_replace('/', '-', $slutt);
-                        echo round(abs($start - $slutt) / 60). " minute";
-            }}
+                $case_tid  = round(abs($start - $slutt) / 60);
+                
+                $sql = "SELECT Count(status) as count FROM under_behandling";
+                $result2 = mysqli_query($conn, $sql);
+                $count = mysqli_fetch_assoc($result2)['count'];
+                $total_tid = ($total_tid + $case_tid) / $count;
+            }
+                echo " <td>$total_tid Minutter</td>";
+            }
 
 
 
@@ -106,6 +114,30 @@
         </tr>
         <tr>
             <td>Gjennomsnitt totaltid</td>
+            <?php
+        include_once 'connect.php';
+        $sql = "SELECT *
+        FROM problemer
+        INNER JOIN ferdig
+        ON problemer.id = ferdig.id;";
+          $result = mysqli_query($conn, $sql) or die("error".mysqli_error($conn));
+          $total_tid = 0;
+          if (mysqli_num_rows($result) > 0) {
+            while ($Row = mysqli_fetch_assoc($result)) {
+                $reg_tid = $Row['tid'];
+                $id = $Row['id'];
+                $start_tid = $Row['tid'];
+
+                $start = strtotime($reg_tid);
+                $start = str_replace('/', '-', $start);
+                $slutt = strtotime($start_tid);
+                $slutt = str_replace('/', '-', $slutt);
+            
+                $sql = "SELECT Count(status) as count FROM under_behandling";
+                $result2 = mysqli_query($conn, $sql);
+                $count = mysqli_fetch_assoc($result2)['count'];
+            }}
+            ?>
         </tr>
     </table>
 </body>
