@@ -23,7 +23,7 @@
         $result = mysqli_query($conn, $sql);
         $data=mysqli_fetch_assoc($result);
         $data=$data['total'];
-        echo "<td>$data Minutter</td>";
+        echo "<td>$data </td>";
             ?>
         </tr>
         <tr>
@@ -35,7 +35,7 @@
         $result = mysqli_query($conn, $sql);
         $data=mysqli_fetch_assoc($result);
         $data=$data['total'];
-        echo "<td>$data Minutter</td>";
+        echo "<td>$data </td>";
             ?>
         </tr>
         <tr>
@@ -47,7 +47,7 @@
         $result = mysqli_query($conn, $sql);
         $data=mysqli_fetch_assoc($result);
         $data=$data['total'];
-        echo "<td>$data Minutter</td>";
+        echo "<td>$data </td>";
             ?>
         </tr>
         <tr>
@@ -59,7 +59,7 @@
         $result = mysqli_query($conn, $sql);
         $data=mysqli_fetch_assoc($result);
         $data=$data['total'];
-        echo "<td>$data Minutter</td>";
+        echo "<td>$data </td>";
             ?>
         </tr>
         <tr>
