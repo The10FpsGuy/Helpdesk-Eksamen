@@ -84,7 +84,7 @@
         if ($result) {
             // Hvis den ikke finner case_id-en i problemer tabellen så sier den at den ikke finner den, hvis den finner den så går den videre, og markerer som ferdig
             if ($conn->query($sql) === TRUE) {
-                $sql = "DELETE FROM under_behandling WHERE id='$id'";
+                $sql = "UPDATE problemer SET status='Ferdig' WHERE id='$id'";
                 if ($conn->query($sql) === TRUE) {
                     $sql = "INSERT INTO ferdig (navn, status, tid, løsning, id) VALUES ('$navn', 'Løst', '$tid', '$løsning', '$id')";
                     if ($conn->query($sql) === TRUE) {

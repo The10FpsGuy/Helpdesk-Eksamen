@@ -1,0 +1,16 @@
+table {
+    border: 3px black solid;
+    padding: 10px;
+    margin: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+    width: 60%;
+}
+
+table th, td {
+    border: 2px black solid;
+    padding: 20px;
+}
+table tr:hover {background-color: coral;}
+table th {background-color: #04AA6D;}

@@ -46,7 +46,7 @@
         if ($result) {
             // Hvis den ikke finner case_id-en i problemer tabellen så sier den at den ikke finner den, hvis den finner den så går den videre, og legger inn en record som sier hvem som har tatt på seg case-en, når og ID
             if (mysqli_num_rows($result) > 0) {
-                $sql = "INSERT INTO under_behandling (navn, tid, status, id) VALUES ('$navn', '$tid', 'Under arbeid', $case_id)";
+                $sql = "INSERT INTO under_behandling (navn, start_tid, status, id) VALUES ('$navn', '$tid', 'Under arbeid', $case_id)";
             } else {
                 echo 'Fant ikke ID';
             }
@@ -75,7 +75,7 @@
             while ($row = mysqli_fetch_assoc($result)) {
               $navn = $row['navn'];
               $status = $row['status'];
-              $tid = $row['tid'];
+              $tid = $row['start_tid'];
               $id = $row['id'];
             
             echo "<tr>";
